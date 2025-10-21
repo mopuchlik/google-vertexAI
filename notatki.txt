@@ -1,0 +1,23 @@
+mam następujący problem: wiele szeregów czasowych z danymi finansowymi (payments), zmienna objaśniana to skłonność do defaultu w ciągu 1M, 2M, 3M. Trzeba znaleźć istotne features.
+
+1. Indykator defaultu w ciągu 1-3M można po prostu policzyć na podstawie historii w zależności od punku odcięcia historii. Czyli indykator zależny jest od pkt. odcięcia (to imo nie jest problem, trzeba to tylko liczyć dynamicznie)
+2. Podejśćie do modelu:
+a) las losowy
+b) zmienna objaśniana opisana w pkt 1.
+c) problem klasyfikacji
+d) szczegóły kalibracji lasu losowego na później
+e) liczę (randomized) feature importance i wybieram istotne regresory
+
+Czy to brzmi sensownie?
+
+########
+
+chce użyć do tego modelu platformy VertexAI. W jaki sposób to zrobić? Uwagi:
+1. Chcę mieść las losowy, nie chcę korzystać w tym momencie z dużej sieci neuronowej. Czy na platformie VertexAI jest gotowy frameowrk do lasów losowych, czy może trzeba to postawić od zera.
+2. Przygotowanie danych: czy VertexAI ma agentów do przygotowania, czyszczenia, etc. danych
+3. Potencjalnie jeśli miałbym dodatkowe dane o innej częstotliwości (np dane makro z częstotliwości kwartalnej, dane payments są tygodniowe) to czy mogę użyc modułu RAG jeśli
+a) dane będą liczbowe np. wzrost PKB w jakimś kraju
+b) dane są tekstowe np. z opisem sektora
+c) czy można dodać do modelu lasu dane RAG (ten moduł jest w architekturze sieci neuronowej) -- więc pewnie nie bezpośrednio.
+d) może pomysł jest taki: szukam istotnych featerów lasem losowym potem wrzucam to do sieci neuronowej i dodaje RAG
+e) dane o mniejszej częstotliwości co do zasady można dodać do zbiory o większej częstotliwości, (liczowe) ale nie jestem pewien czy to zrobi różnicę, może masz na ten temat jakieś informacje z literatury?
